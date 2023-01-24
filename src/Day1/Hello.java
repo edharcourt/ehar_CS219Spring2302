@@ -4,7 +4,12 @@ package Day1;
 // Exactly one of those classes must contain a
 // main function.
 public class Hello {
+
+    // void is the return type of main
+    // main is a function that returns nothing
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Jello Shworld!");
+
+        // System.out.println(43/0);
     }
 }
