@@ -1,33 +1,20 @@
 package Day2;
 
+import Utility.Util;
+
 // by convention (not a strict rule)
 // class names in Java are capitalized
 // camel case
 public class VariablesAndTypes {
 
 
-    /**
-     *
-     * @param c - initial deposit
-     * @param r - yearly interest rate
-     * @param t - number of years
-     * @param n - number of time to compound
-     * @return Returns the value of the investment
-     */
-    public static double investment(double c, double r, double t, double n) {
-        return c*Math.pow(1 + r/n, t*n);
-    }
-
-    public static double f2c(double f) {
-        return 5/9.0*(f - 32);
-    }
 
     public static void main(String[] args) {
         int x = 7;
         System.out.println(x * 7);
         x = 8;
 
-        System.out.println(f2c(212));
+        System.out.println(Util.f2c(212));
 
         // floating-point numbers
 
@@ -51,8 +38,7 @@ public class VariablesAndTypes {
         System.out.println(Math.pow(Math.PI, Math.E));
 
         // casting a double to an int
-        System.out.println(investment(1,1,1,1e9));
-
+        System.out.println(Util.investment(1,1,1,1e9));
     }
 
 }
