@@ -3,7 +3,10 @@ package LoopExercises;
 public class MoreLoopExercises {
 
     public static boolean isVowel(char ch) {
-        return false;
+        return "aeiouyAEIOUY".indexOf(ch) > -1;
+
+        // return ch == 'a' || ch == 'i' || ch == 'o' || ch == 'e' ||
+        //        ch == 'u' || ch == 'y';
     }
 
     /*
@@ -51,8 +54,34 @@ public class MoreLoopExercises {
      * should return 3.
      */
     public static int match(String patt, String src) {
-        return -1;
-    }
+
+        int cnt = 0;
+
+        // for each character in src
+        for (int i = 0; i <= src.length() - patt.length(); i++) {
+
+            int j = 0;
+            boolean flag = true;
+
+            // go through patt until the end or we don't match
+            while (j < patt.length() && flag) {
+                char patt_ch = patt.charAt(j);
+                char src_ch = src.charAt(i+j);
+
+                if (isVowel(src_ch) && patt_ch == '0' ||
+                    !isVowel(src_ch) && patt_ch == '1') {
+                    j++;
+                }
+                else {
+                    flag = false;
+                }
+            } // while
+
+            if (flag) cnt++;
+        }  // for
+
+        return cnt;
+    }  // match
 
     /*
      * count7s  returns the number of times the digit 7 appears in
@@ -222,8 +251,7 @@ public class MoreLoopExercises {
      */
     public static void main(String[] args) {
         System.out.println(match("010", "amazing") == 2);
-        System.out.println(match("110", "programming") == 3);
-        System.out.println(match("000", "programming") == 0);
-        System.out.println(match("11011", "programming") == 3);
+        System.out.println(match("011", "amazing") == 1);
+
     }
 }
