@@ -94,13 +94,33 @@ public class MoreLoopExercises {
      * Question: Does the function work if n is negative?
      */
     public static int count7s(int n) {
-        return -1;
+        int count = 0;
+        n = Math.abs(n);
+        while (n > 0) {
+            if (n % 10 == 7) {
+                count++;
+            }
+            n = n / 10;
+        }
+        return count;
+    }
+
+    public static int gop7s(int n) {
+        int count = 0;
+        String s = String.valueOf(n);
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '7')
+                count++;
+        }
+        return count;
     }
 
     /*
-     *  If we list all the natural numbers below 10 that are multiples
-     *  of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
-     *  Find the sum of all the multiples of 3 or 5 below 1000.
+     *  If we list all the natural numbers below 10 that
+     *  are multiples of 3 or 5, we get 3, 5, 6 and 9.
+     *  The sum of these multiples is 23.
+     *
+     * Find the sum of all the multiples of 3 or 5 below 1000.
      *
      *  https://projecteuler.net/problem=1
      *
@@ -109,7 +129,18 @@ public class MoreLoopExercises {
      *  sum3or5(1000) = 233168
      */
     public static int sum3or5(int n) {
-        return -1;
+        int sum = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (i % 3 == 0) {
+                sum = sum + i;
+            }
+            else if (i % 5 == 0) {
+                sum = sum + i;
+            }
+        }
+
+        return sum;
     }
 
     /*
@@ -117,7 +148,7 @@ public class MoreLoopExercises {
      * and less than n. If no factors return -1.
      * Notice that this function uses longs and not ints.
      *
-     *  factor(25) =
+     *  factor(25) = 5
      *  factor(59953793) == 7727
      *  factor(1531482031) == -1
      *  factor(7304692485435694493L) == -1;
@@ -127,7 +158,10 @@ public class MoreLoopExercises {
      *           remove it?
      */
     public static long factor(long n) {
-        return -1; // shut up error message
+        for (int i = 2; i <= Math.sqrt(n); i++)
+            if (n % i == 0)
+                return i;
+        return -1;
     }
 
     /*
@@ -168,7 +202,8 @@ public class MoreLoopExercises {
      *  prints out the integers from 1 to n. If the number is
      *  divisible by 3 print "fizz" instead of the number. If
      *  the number is divisible by 5 then print "buzz" instead
-     *  of the number. And if it is divisible by 3 and 5 it prints "fizz buzz".
+     *  of the number. And if it is divisible by 3 and 5 it prints
+     * "fizz buzz".
      *
      *  For example, calling fizzbuzz(16) would print
      *  1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizz buzz 16
@@ -192,7 +227,15 @@ public class MoreLoopExercises {
      *
      */
     public static boolean isPalindrome(int n) {
-        return false; // shut up error message
+        int m = 0;
+        int tmp = n;
+
+        while (n > 0) {
+            m = m * 10 + (n % 10);
+            n = n / 10;
+        }
+
+        return m == tmp;
     }
 
     /*
@@ -250,6 +293,15 @@ public class MoreLoopExercises {
      * Thoroughly test all of your functions above.
      */
     public static void main(String[] args) {
+
+        System.out.println(isPalindrome(1221));
+        System.out.println(!isPalindrome(1234));
+
+        // count7s
+        System.out.println(count7s(77197) == 3);
+        System.out.println(count7s(1234) == 0);
+        System.out.println(count7s(-7797) == 3);
+
         System.out.println(match("010", "amazing") == 2);
         System.out.println(match("011", "amazing") == 1);
 
