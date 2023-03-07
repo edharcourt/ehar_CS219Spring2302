@@ -1,5 +1,10 @@
 package Utility;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Scanner;
+
 public class Util {
     /**
      *
@@ -30,4 +35,24 @@ public class Util {
                (0.4275*t -35.75)*Math.pow(v,.16);
     }
 
-}
+    public static Scanner openSite(String path) {
+        try {
+            URL url = new URL(path);
+            return new Scanner(
+               url.openConnection().
+                   getInputStream()
+            );
+        } catch (MalformedURLException e) {
+            System.out.println("Error: malformed URL");
+
+            // null is the empty object
+            return null;
+            //throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("Error: cannot access site.");
+            return null;
+            //throw new RuntimeException(e);
+        }
+    } // openSite
+
+}  // class Util
