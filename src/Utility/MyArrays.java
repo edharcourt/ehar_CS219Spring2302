@@ -4,6 +4,30 @@ import java.util.Arrays;
 
 public class MyArrays {
 
+    /**
+     * Shift items to the left starting at location i.
+     * The last item in the array zeroed out.
+     * @param values
+     * @param i  0 <= i < values.length
+     */
+    public static void shift(int [] values, int i) {
+
+        for (int j = i; j < values.length - 1; j++)
+            values[j] = values[j+1];
+
+        values[values.length - 1] = 0;
+
+    }
+
+    public static int indexOf(int [] values,
+                              int key) {
+        for (int i = 0; i < values.length; i++)
+            if (values[i] == key)
+                return i;
+
+        return -1;
+    }
+
     public static double median(double [] values) {
 
         double [] tmp = Arrays.copyOf(values, values.length);
@@ -49,6 +73,13 @@ public class MyArrays {
             System.out.print(values[i] + ", ");
         System.out.print(values[values.length-1]);
         System.out.println(']');
+    }
+
+    public static void main(String[] args) {
+        // test indexOf
+        int [] array = {3, 4, 9, 2, 7};
+        System.out.println(indexOf(array, 2) == 3);
+        System.out.println(indexOf(array, 77) == -1);
     }
 
 } // class MyArrays
