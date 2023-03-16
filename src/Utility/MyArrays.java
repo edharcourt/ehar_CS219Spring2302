@@ -1,5 +1,6 @@
 package Utility;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyArrays {
@@ -72,6 +73,16 @@ public class MyArrays {
         for (int i = 0; i < values.length - 1; i++)
             System.out.print(values[i] + ", ");
         System.out.print(values[values.length-1]);
+        System.out.println(']');
+    }
+
+    // printdoubles is *overloaded* there are multiple
+    // version with different parameter types
+    public static void printdoubles(ArrayList<Double> values) {
+        System.out.print('[');
+        for (int i = 0; i < values.size() - 1; i++)
+            System.out.print(values.get(i) + ", ");
+        System.out.print(values.get(values.size()-1));
         System.out.println(']');
     }
 
