@@ -28,7 +28,25 @@ public class Coordinate {
     public double dist(Coordinate that) {
         // TODO look up the great circle distance
         // between two GPS coordinates.
-        return -1.0;
+        double x =
+          Math.pow(
+            Math.sin(
+              Math.toRadians(
+                this.lat - that.lat)/2), 2) +
+
+            Math.cos(Math.toRadians(that.lat)) *
+
+            Math.cos(Math.toRadians(this.lat)) *
+
+            Math.pow(
+              Math.sin(
+                Math.toRadians(
+                  this.lng - that.lng)/2), 2);
+
+        double y = 2*Math.atan2(Math.sqrt(x), Math.sqrt(1 -x));
+
+        final int R = 6371000;
+        return R * y / 1000;
     }
 
 }  // Coordinate
