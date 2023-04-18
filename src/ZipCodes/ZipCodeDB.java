@@ -3,6 +3,7 @@ package ZipCodes;
 import Utility.Util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ZipCodeDB {
@@ -33,14 +34,30 @@ public class ZipCodeDB {
             Double.parseDouble(parts[5])
           );
           codes.add(code);
-      }
+      } // while
+      Collections.sort(codes);
     } // load
 
+    // TODO What if there is more than one entry
+    // for a code? Return an array of ZipCode objects.
     public ZipCode findByZip(String code) {
        for (ZipCode zc : codes)
            if (zc.getCode().equals(code))
                return zc;
        return null;
+    }
+
+    // TODO return an ArrayList of Zipcodes that
+    // match code.
+    public ZipCode bsearch(String code) {
+        int pos = Collections.binarySearch(codes,
+            new ZipCode(code, "","",
+                        0,0));
+
+        if (pos == -1)
+            return null;
+        else
+            return codes.get(pos);
     }
 
     public void findDuplicates() {

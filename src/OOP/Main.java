@@ -1,10 +1,15 @@
 package OOP;
 
-import org.w3c.dom.ls.LSOutput;
-
 public class Main {
 
     public static void main(String[] args) {
+
+        Checksum cs = new IntegerChecksum();
+        System.out.println(cs.checksum(12345) == 15d);
+
+        Checksum scs = new StringChecksum();
+        System.out.println(scs.checksum("Hello"));
+
         Particle p1 =
           new Particle(3.2, 34.5, 2.0, -1.9);
         System.out.println(p1.getX());
